@@ -1,5 +1,5 @@
 #如需收集每日美图去掉下面注释设置保存文件夹路径
-#savepath="/volume1/wallpaper"
+savepath="/volume1/web/wallpaper"
 #在FileStation里面右键文件夹属性可以看到路径
 pic=$(wget -t 5 --no-check-certificate -qO- "https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1")
 echo $pic|grep -q enddate||exit
@@ -11,6 +11,11 @@ wget -t 5 --no-check-certificate  $link -qO $tmpfile
 rm -rf /usr/syno/etc/login_background*.jpg
 cp -f $tmpfile /usr/syno/etc/login_background.jpg &>/dev/null
 cp -f $tmpfile /usr/syno/etc/login_background_hd.jpg &>/dev/null
+cp -f $tmpfile /usr/syno/synoman/webman/resources/images/default_wallpaper/01.jpg &>/dev/null
+cp -f $tmpfile /usr/syno/synoman/webman/resources/images/default/1x/default_wallpaper/dsm6_01.jpg &>/dev/null
+cp -f $tmpfile /usr/syno/synoman/webman/resources/images/default/2x/default_wallpaper/dsm6_01.jpg &>/dev/null
+cp -f $tmpfile /usr/syno/synoman/webman/resources/images/default/1x/default_wallpaper/dsm6_02.jpg &>/dev/null
+cp -f $tmpfile /usr/syno/synoman/webman/resources/images/default/2x/default_wallpaper/dsm6_02.jpg &>/dev/null
 title=$(echo $pic|sed 's/.\+"title":"//g'|sed 's/".\+//g')
 copyright=$(echo $pic|sed 's/.\+"copyright[:" ]\+//g'|sed 's/".\+//g')
 word=$(echo $copyright|sed 's/(.\+//g')
